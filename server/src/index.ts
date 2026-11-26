@@ -1,9 +1,12 @@
+import 'dotenv/config';
 import express from 'express';
 import Redis from 'ioredis';
 import { Pool } from 'pg';
+import authRoutes from './routes/auth.routes';
 
 const app = express();
 app.use(express.json());
+app.use('/api/auth', authRoutes);
 
 // 1. Redis connection (Port 6379)
 const redis = new Redis({ host: 'localhost', port: 6379 });
