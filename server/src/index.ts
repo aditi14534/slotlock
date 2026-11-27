@@ -3,10 +3,18 @@ import express from 'express';
 import Redis from 'ioredis';
 import { Pool } from 'pg';
 import authRoutes from './routes/auth.routes';
+import availabilityRoutes from './routes/availability.routes';
+import publicRoutes from './routes/public.routes';
+import serviceRoutes from './routes/service.routes';
+import staffRoutes from './routes/staff.routes';
 
 const app = express();
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/availability', availabilityRoutes);
+app.use('/api/public', publicRoutes);
+app.use('/api/services', serviceRoutes);
+app.use('/api/staff', staffRoutes);
 
 // 1. Redis connection (Port 6379)
 const redis = new Redis({ host: 'localhost', port: 6379 });
